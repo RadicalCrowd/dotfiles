@@ -1,0 +1,67 @@
+# ==============================================================================
+# Starship Prompt Configuration
+# Managed via GNU Stow (~/dotfiles/starship)
+# Design: Minimal, punctuation-focused monospace typography
+# Characters explored: ( ) [ ] { } \ | ; ' : " < > , . ? /
+# ==============================================================================
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Blank line before new prompt for clean visual rhythm
+add_newline = true
+
+# Two-line, compact, left-aligned layout
+format = """
+$directory$git_branch$git_status$cmd_duration$line_break$character"""
+
+# ------------------------------------------------------------------------------
+# Directory: Cyan relative path with ro indicator
+# ------------------------------------------------------------------------------
+[directory]
+style = "bold cyan"
+truncation_length = 0
+truncate_to_repo = false
+read_only = " [ro]"
+read_only_style = "dimmed red"
+format = '[$path]($style)[$read_only]($read_only_style)'
+
+# ------------------------------------------------------------------------------
+# Git Branch: Scope separator '::' and opening boundary '['
+# ------------------------------------------------------------------------------
+[git_branch]
+style = "bold green"
+symbol = ""
+format = '[ :: ](dimmed white)[\[](dimmed white)[$branch]($style)'
+
+# ------------------------------------------------------------------------------
+# Git Status: Punctuation indicators for working tree changes, closing with ']'
+# ------------------------------------------------------------------------------
+[git_status]
+style = "bold green"
+format = '$all_status$ahead_behind[\]](dimmed white) '
+conflicted = ' [=${count}](bold red)'
+ahead = ' [⇡${count}](bold cyan)'
+behind = ' [⇣${count}](bold magenta)'
+diverged = ' [⇕](bold red)'
+untracked = ' [?${count}](dimmed cyan)'
+modified = ' [!${count}](bold yellow)'
+staged = ' [+${count}](bold green)'
+renamed = ' [»${count}](dimmed magenta)'
+deleted = ' [-${count}](bold red)'
+up_to_date = ''
+
+# ------------------------------------------------------------------------------
+# Execution Duration: Semicolon separator ';' for commands exceeding 2 seconds
+# ------------------------------------------------------------------------------
+[cmd_duration]
+min_time = 2_000
+style = "dimmed yellow"
+format = ' [; $duration]($style)'
+
+# ------------------------------------------------------------------------------
+# Input Prompt: Minimal box-drawing pointer '└─>'
+# ------------------------------------------------------------------------------
+[character]
+success_symbol = '[└─>](bold green) '
+error_symbol = '[└─>](bold red) '
+vicmd_symbol = '[└─:](bold yellow) '

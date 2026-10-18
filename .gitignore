@@ -1,0 +1,18 @@
+# Backups (do not commit)
+*.bak
+*.pre-stow.bak
+*.term-font.bak
+
+# Local generated state
+*.old
+*.swp
+*.swo
+*~
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Stow artifacts (keep source files only; symlinks live in ~)
+# No build output expected here.

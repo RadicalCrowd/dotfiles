@@ -1,0 +1,14 @@
+# This is the configuration file for Ghostty.
+# Path: ~/.config/ghostty/config
+
+theme = ii-auto
+
+# Background transparency (0.0 = fully transparent, 1.0 = fully opaque)
+background-opacity = 0.85
+
+# Scaled font size (~85% of standard 12-13pt size)
+font-size = 11
+
+# Hide the window title bar and decorations
+window-decoration = false
+
