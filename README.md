@@ -2,13 +2,15 @@
 
 Personal workstation dotfiles for the Arch Linux workstation (`ak10`), managed with GNU Stow.
 
-## Structure
+Each tool lives in its own subfolder with its own `README.md`:
 
-Configs are stored in three subfolders:
-
-- `zsh/` — Zsh environment (Oh My Zsh, plugins, history, keybindings, Starship init) → `~/.zshrc`
-- `nvim/` — Neovim / LazyVim config (`init.lua`, `lua/`, `lazy-lock.json`) → `~/.config/nvim/`
-- `etc/` — System and terminal configs (starship, foot, kitty, ghostty, fontconfig) → `~/.config/`
+- `zsh/` → `~/.zshrc`
+- `nvim/` → `~/.config/nvim/` (LazyVim config)
+- `foot/` → `~/.config/foot/foot.ini`
+- `kitty/` → `~/.config/kitty/kitty.conf`
+- `ghostty/` → `~/.config/ghostty/config`
+- `fontconfig/` → `~/.config/fontconfig/fonts.conf`
+- `starship/` → `~/.config/starship.toml`
 
 ## Install
 
@@ -23,7 +25,7 @@ cd ~/dotfiles
 ./install.sh
 
 # Or manually:
-stow -v -t ~ zsh nvim etc
+stow -v -t ~ zsh nvim foot kitty ghostty fontconfig starship
 
 # Restow a single package after edits
 stow -v -R -t ~ nvim

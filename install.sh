@@ -12,7 +12,7 @@ fi
 cd "$DOTFILES_DIR"
 
 echo "Stowing dotfiles to $HOME ..."
-stow -v -t ~ zsh nvim etc
+stow -v -t ~ zsh nvim foot kitty ghostty fontconfig starship
 
 echo "Done. Verify symlinks:"
 ls -la ~/.zshrc ~/.config/nvim/init.lua ~/.config/starship.toml \
