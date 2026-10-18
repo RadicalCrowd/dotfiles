@@ -1,6 +1,6 @@
 # ==============================================================================
 # Starship Prompt Configuration
-# Managed via GNU Stow (~/dotfiles/starship)
+# Managed via GNU Stow (~/dotfiles/etc)
 # Design: Minimal, punctuation-focused monospace typography
 # Characters explored: ( ) [ ] { } \ | ; ' : " < > , . ? /
 # ==============================================================================
