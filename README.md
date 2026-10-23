@@ -11,6 +11,8 @@ Each tool lives in its own subfolder with its own `README.md`:
 - `ghostty/` → `~/.config/ghostty/config`
 - `fontconfig/` → `~/.config/fontconfig/fonts.conf`
 - `starship/` → `~/.config/starship.toml`
+- `tmux/` → `~/.config/tmux/tmux.conf` (SpaceFN, sidebar, themes)
+- `keyd/` → `/etc/keyd/default.conf` (SpaceFN layer mapping)
 
 ## Install
 
@@ -25,7 +27,7 @@ cd ~/dotfiles
 ./install.sh
 
 # Or manually:
-stow -v -t ~ zsh nvim foot kitty ghostty fontconfig starship
+stow -v -t ~ zsh nvim foot kitty ghostty fontconfig starship tmux
 
 # Restow a single package after edits
 stow -v -R -t ~ nvim
