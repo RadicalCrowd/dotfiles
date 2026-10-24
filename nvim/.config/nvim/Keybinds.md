@@ -32,7 +32,7 @@ All window and split actions operate without touching physical `Ctrl` or `Alt` k
 | **`Space + z`** | `A-z` | **Toggle Zoom** (maximize/restore split) | Zoom pane fullscreen |
 | **`Space + q`** | `A-q` | **Close Split / Buffer** | Close active pane |
 
-*Note: All SpaceFN navigation chords function in Normal, Insert, Visual, and Terminal modes.*
+*Note: All SpaceFN navigation chords function in Normal, Insert, Visual, and Terminal modes. Can be triggered either by holding **Space** (tuned with `overloadi` for zero typing delay) or holding **CapsLock** (`CapsLock + e/s/d/f`). Tapping **CapsLock** emits instant `Escape`.*
 
 ---
 
