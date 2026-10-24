@@ -30,7 +30,7 @@ def set_space_mode(is_game: bool):
         if is_game:
             subprocess.run(['keyd', 'bind', 'main.space = space'], capture_output=True, check=True)
         else:
-            subprocess.run(['keyd', 'bind', 'main.space = overload(space_fn, space)'], capture_output=True, check=True)
+            subprocess.run(['keyd', 'bind', 'main.space = overloadi(space, overloadt(space_fn, space, 180), 150)'], capture_output=True, check=True)
     except Exception as e:
         sys.stderr.write(f"keyd-auto-exempt error: {e}\n")
 
