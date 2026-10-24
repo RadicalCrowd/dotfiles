@@ -73,13 +73,12 @@ return {
     opts = {
       heading = {
         enabled = true,
-        sign = true,
+        sign = false, -- Gutter free of heading level markers
         position = "overlay",
         icons = { "◉ ", "○ ", "✸ ", "✿ ", "◆ ", "◇ " },
-        signs = { "󰫎 " },
-        width = "full",
+        width = "block", -- Clean pill/card banner around heading text instead of screen-wide stripes
         left_pad = 1,
-        right_pad = 1,
+        right_pad = 2,
         min_width = 0,
         border = false,
         backgrounds = {
@@ -98,6 +97,9 @@ return {
           "RenderMarkdownH5",
           "RenderMarkdownH6",
         },
+      },
+      indent = {
+        enabled = false, -- Clean bullet lists without vertical tree guide bars
       },
       paragraph = {
         enabled = true,
@@ -196,7 +198,7 @@ return {
         highlight = "RenderMarkdownLink",
         wiki = {
           enabled = true,
-          icon = "󱗖 ",
+          icon = "", -- Clean wikilinks without double-icon clutter on bullet items
           conceal_destination = true,
           highlight = "RenderMarkdownWikiLink",
         },
