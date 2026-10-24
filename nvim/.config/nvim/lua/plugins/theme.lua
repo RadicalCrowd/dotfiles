@@ -23,10 +23,21 @@ return {
             information = { "undercurl" },
           },
         },
+        render_markdown = true,
         snacks = true,
         mini = true,
         treesitter = true,
       },
+      custom_highlights = function(colors)
+        return {
+          RenderMarkdownWikiLink = { fg = colors.lavender, bold = true },
+          RenderMarkdownLink = { fg = colors.sapphire, underline = true },
+          RenderMarkdownUnchecked = { fg = colors.overlay0 },
+          RenderMarkdownDash = { fg = colors.surface2 },
+          RenderMarkdownTableHead = { fg = colors.sky, bold = true },
+          RenderMarkdownTableRow = { fg = colors.text },
+        }
+      end,
     },
   },
 
