@@ -87,3 +87,17 @@ All layout actions operate without touching physical Ctrl or Alt keys:
 - **Git**: `lewis6991/gitsigns.nvim` + floating LazyGit (`<leader>gg`).
 - **Markdown & Vault**: `MeanderingProgrammer/render-markdown.nvim` with custom Obsidian callouts and checkboxes.
 - **Themes**: `catppuccin/nvim` (Mocha default), `ellisonleao/gruvbox.nvim`, and `folke/tokyonight.nvim`.
+
+---
+
+## 5. Obsidian Daily Note Integration & Dashboard
+
+The editor boots into the default LazyVim dashboard (`snacks.nvim`). The vault's periodic logging is accessible globally:
+
+| Trigger | Action | Target / Logic |
+|---|---|---|
+| **Dashboard `d`** | Open Today's Daily Note | Reads `01-Periodic/Templates/Daily.md`, expands Templater tags, and creates today's note if missing |
+| **`<leader>od` / `<leader>dd`** | Open Today's Daily Note | Same as above; executable from any active buffer or working directory |
+| **`<leader>dn`** | New / Today's Daily Note | Explicit alias for daily note creation/navigation |
+| **`<leader>ol` / `<leader>dl`** | Open Latest Existing Daily Note | Traverses `01-Periodic/**/Daily/**/*.md` to open the latest completed log |
+| **`<CR>` on `[[Wikilink]]`** | Jump to Obsidian Note | Resolves link target relative to vault root (`~/Obsidian-Vaults/RadicallyInsane`) |

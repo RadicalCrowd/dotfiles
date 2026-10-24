@@ -13,33 +13,16 @@ map("v", ">", ">gv")
 -- Quick save
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
--- Open Today's Daily Note from anywhere in any directory (<leader>od or <leader>dd)
-local function open_daily_note()
-  local vault_dir = vim.fn.expand("~/Obsidian-Vaults/RadicallyInsane")
-  local year = os.date("%Y")
-  local month = os.date("%m")
-  local today = os.date("%Y-%m-%d")
-  local today_path = string.format("%s/01-Periodic/%s/Daily/%s/%s.md", vault_dir, year, month, today)
+-- Obsidian Daily Note Integration (Obsidian Plugin Parity)
+-- <leader>od / <leader>dd: Open today's daily note (generates from template if missing)
+-- <leader>ol / <leader>dl: Open latest existing daily note in history
+local daily = require("config.daily")
 
-  local target = today_path
-  if vim.fn.filereadable(today_path) == 0 then
-    local glob_pattern = string.format("%s/01-Periodic/**/Daily/**/*.md", vault_dir)
-    local files = vim.fn.glob(glob_pattern, true, true)
-    if #files > 0 then
-      table.sort(files)
-      target = files[#files]
-    end
-  end
-
-  if vim.fn.filereadable(target) == 1 then
-    vim.cmd("edit " .. vim.fn.fnameescape(target))
-  else
-    vim.notify("Daily note not found at " .. target, vim.log.levels.WARN)
-  end
-end
-
-map("n", "<leader>od", open_daily_note, { desc = "Open Today's Daily Note" })
-map("n", "<leader>dd", open_daily_note, { desc = "Open Today's Daily Note" })
+map("n", "<leader>od", daily.open_daily_note, { desc = "Open Today's Daily Note (Create if missing)" })
+map("n", "<leader>dd", daily.open_daily_note, { desc = "Open Today's Daily Note (Create if missing)" })
+map("n", "<leader>dn", daily.open_daily_note, { desc = "New / Today's Daily Note" })
+map("n", "<leader>ol", daily.open_latest_daily_note, { desc = "Open Latest Existing Daily Note" })
+map("n", "<leader>dl", daily.open_latest_daily_note, { desc = "Open Latest Existing Daily Note" })
 
 -- Obsidian / Markdown Wikilink Jump: press Enter on [[Wikilink]] to jump
 vim.api.nvim_create_autocmd("FileType", {
