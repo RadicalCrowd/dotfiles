@@ -75,11 +75,11 @@ return {
         enabled = true,
         sign = true,
         position = "overlay",
-        icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+        icons = { "◉ ", "○ ", "✸ ", "✿ ", "◆ ", "◇ " },
         signs = { "󰫎 " },
         width = "full",
-        left_pad = 0,
-        right_pad = 0,
+        left_pad = 1,
+        right_pad = 1,
         min_width = 0,
         border = false,
         backgrounds = {
@@ -131,7 +131,7 @@ return {
         enabled = true,
         icons = { "●", "○", "◆", "◇" },
         left_pad = 0,
-        right_pad = 0,
+        right_pad = 1,
         highlight = "RenderMarkdownBullet",
       },
       checkbox = {
@@ -224,16 +224,40 @@ return {
     },
   },
 
-  -- Floating LazyGit integration
+  -- Markdownlint configuration: suppress line-length and HTML warnings
+  {
+    "mfussenegger/nvim-lint",
+    opts = function(_, opts)
+      local lint = require("lint")
+      local md = lint.linters["markdownlint-cli2"]
+      if md then
+        local cfg = vim.fn.expand("~/.markdownlint.json")
+        if vim.fn.filereadable(cfg) == 1 then
+          md.args = { "--config", cfg, "-" }
+        end
+      end
+    end,
+  },
+
+  -- Floating LazyGit integration & Zen Mode
   {
     "folke/snacks.nvim",
     opts = {
       lazygit = {
         configure = true,
       },
+      zen = {
+        toggles = {
+          dim = false,
+        },
+        win = {
+          width = 120,
+        },
+      },
     },
     keys = {
       { "<leader>gg", function() Snacks.lazygit() end, desc = "LazyGit (Floating Popup)" },
+      { "<leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode (Centered Reading)" },
     },
   },
 }
