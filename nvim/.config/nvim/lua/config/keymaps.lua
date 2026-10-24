@@ -24,6 +24,11 @@ map("n", "<leader>dn", daily.open_daily_note, { desc = "New / Today's Daily Note
 map("n", "<leader>ol", daily.open_latest_daily_note, { desc = "Open Latest Existing Daily Note" })
 map("n", "<leader>dl", daily.open_latest_daily_note, { desc = "Open Latest Existing Daily Note" })
 
+-- Theme Switcher with Live Fuzzy Preview
+map("n", "<leader>ut", function()
+  Snacks.picker.colorschemes()
+end, { desc = "Theme Switcher (Live Preview)" })
+
 -- Obsidian / Markdown Wikilink Jump: press Enter on [[Wikilink]] to jump
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",

@@ -4,6 +4,17 @@
 -- ==============================================================================
 
 return {
+  -- Bufferline: Auto-hide top tab bar when only 1 buffer is open
+  {
+    "akinsho/bufferline.nvim",
+    opts = {
+      options = {
+        always_show_bufferline = false,
+        auto_toggle_bufferline = true,
+      },
+    },
+  },
+
   -- Statusline: Lualine styled with punctuation syntax
   {
     "nvim-lualine/lualine.nvim",

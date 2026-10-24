@@ -66,29 +66,18 @@ return {
     },
   },
 
-  -- Markdown Live Rendering & Obsidian Callouts
+  -- Markdown Clean Live Rendering (Pure Typographic Hierarchy & Obsidian Parity)
   {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "norg", "rmd", "org", "codecompanion" },
     opts = {
       heading = {
         enabled = true,
-        sign = false, -- Gutter free of heading level markers
+        sign = false, -- No gutter signs
         position = "overlay",
-        icons = { "◉ ", "○ ", "✸ ", "✿ ", "◆ ", "◇ " },
-        width = "block", -- Clean pill/card banner around heading text instead of screen-wide stripes
-        left_pad = 1,
-        right_pad = 2,
-        min_width = 0,
-        border = false,
-        backgrounds = {
-          "RenderMarkdownH1Bg",
-          "RenderMarkdownH2Bg",
-          "RenderMarkdownH3Bg",
-          "RenderMarkdownH4Bg",
-          "RenderMarkdownH5Bg",
-          "RenderMarkdownH6Bg",
-        },
+        icons = { "▍ ", "▎ ", "▏ ", "• ", "▫ ", "▪ " }, -- Crisp left vertical pill accents
+        width = "normal", -- Natural text width
+        backgrounds = {}, -- Pure typography: eliminated loud colored background stripes
         foregrounds = {
           "RenderMarkdownH1",
           "RenderMarkdownH2",
@@ -99,7 +88,7 @@ return {
         },
       },
       indent = {
-        enabled = false, -- Clean bullet lists without vertical tree guide bars
+        enabled = false, -- Clean bullet lists without vertical tree guide lines (│ │)
       },
       paragraph = {
         enabled = true,
@@ -118,8 +107,8 @@ return {
         left_pad = 2,
         right_pad = 2,
         border = "thin",
-        above = "▄",
-        below = "▀",
+        above = "",
+        below = "",
         highlight = "RenderMarkdownCode",
         highlight_inline = "RenderMarkdownCodeInline",
       },
@@ -198,7 +187,7 @@ return {
         highlight = "RenderMarkdownLink",
         wiki = {
           enabled = true,
-          icon = "", -- Clean wikilinks without double-icon clutter on bullet items
+          icon = "", -- Clean wikilinks: eliminated double icon (● 󱗖) on list items
           conceal_destination = true,
           highlight = "RenderMarkdownWikiLink",
         },
@@ -253,7 +242,7 @@ return {
           dim = false,
         },
         win = {
-          width = 120,
+          width = 110, -- Clean 110-col readable line length (Obsidian style)
         },
       },
     },

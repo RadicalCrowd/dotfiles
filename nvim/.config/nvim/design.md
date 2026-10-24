@@ -85,8 +85,10 @@ All layout actions operate without touching physical Ctrl or Alt keys:
 - **File Exploration**: `stevearc/oil.nvim` (edit directories as text buffers) + `folke/snacks.nvim` (fast fuzzy picker).
 - **Jump Navigation**: `folke/flash.nvim` (2-keystroke jump to anywhere on screen).
 - **Git**: `lewis6991/gitsigns.nvim` + floating LazyGit (`<leader>gg`).
-- **Markdown & Vault**: `MeanderingProgrammer/render-markdown.nvim` with custom Obsidian callouts and checkboxes.
-- **Themes**: `catppuccin/nvim` (Mocha default), `ellisonleao/gruvbox.nvim`, and `folke/tokyonight.nvim`.
+- **Markdown & Vault**: `MeanderingProgrammer/render-markdown.nvim` with pure typographic hierarchy, auto-folded YAML frontmatter, and custom Obsidian callouts.
+- **Themes**: `folke/tokyonight.nvim` (Default: `tokyonight-night`), `rebelot/kanagawa.nvim` (`kanagawa-dragon`), `ellisonleao/gruvbox.nvim` (Retro Dark), `rose-pine/neovim` (`rose-pine-moon`), and `catppuccin/nvim`.
+- **Theme Switcher**: `<leader>ut` (live fuzzy colorscheme preview).
+- **Distraction-Free Zen**: `<leader>z` (centered 110-column document view).
 
 ---
 
@@ -101,3 +103,5 @@ The editor boots into the default LazyVim dashboard (`snacks.nvim`). The vault's
 | **`<leader>dn`** | New / Today's Daily Note | Explicit alias for daily note creation/navigation |
 | **`<leader>ol` / `<leader>dl`** | Open Latest Existing Daily Note | Traverses `01-Periodic/**/Daily/**/*.md` to open the latest completed log |
 | **`<CR>` on `[[Wikilink]]`** | Jump to Obsidian Note | Resolves link target relative to vault root (`~/Obsidian-Vaults/RadicallyInsane`) |
+| **`<leader>ut`** | Live Theme Switcher | Fuzzy picker with real-time palette preview across all themes |
+| **`<leader>z`** | Centered Zen Reading | Toggles 110-column centered reading margin matching Obsidian |
