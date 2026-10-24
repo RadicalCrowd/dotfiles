@@ -11,8 +11,8 @@ Each tool lives in its own subfolder with its own `README.md`:
 - `ghostty/` → `~/.config/ghostty/config`
 - `fontconfig/` → `~/.config/fontconfig/fonts.conf`
 - `starship/` → `~/.config/starship.toml`
-- `tmux/` → `~/.config/tmux/tmux.conf` (SpaceFN, sidebar, themes)
-- `keyd/` → `/etc/keyd/default.conf` (SpaceFN layer mapping)
+- `tmux/` → `~/.config/tmux/` (SpaceFN ESDF cluster, punctuation status, left sidebar, themes)
+- `keyd/` → `/etc/keyd/default.conf` (SpaceFN hardware layer, automatic game exemption)
 
 ## Install
 
