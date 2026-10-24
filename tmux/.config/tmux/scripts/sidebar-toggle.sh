@@ -10,7 +10,7 @@ if [ -n "$sidebar_pane_id" ]; then
   # Sidebar is open -> close it
   tmux kill-pane -t "$sidebar_pane_id"
 else
-  # Sidebar is closed -> open on the left with width 24
+  # Sidebar is closed -> open on the left with width 30
   SCRIPT_PATH="${HOME}/.config/tmux/scripts/sidebar.sh"
-  tmux split-window -b -h -l 24 -T "$SIDEBAR_TITLE" "bash '$SCRIPT_PATH'"
+  tmux split-window -b -h -l 30 -T "$SIDEBAR_TITLE" "bash '$SCRIPT_PATH'"
 fi
