@@ -1,6 +1,19 @@
+---
+type: resource
+status: active
+para: area
+area: SystemConfig
+owner: akif
+created: 2026-10-24
+updated: 2026-10-24
+tags: [systemconfig, nvim, neovim, design, specification, spacefn, typography, keymap]
+---
+
 # Neovim Design Specification
 
 Canonical design rules, ergonomic invariants, requirements, and visual grammar contract for the Neovim environment on Arch Linux (`ak10`).
+
+[[03-Areas/SystemConfig/nvim/README|nvim Overview]] · [[03-Areas/SystemConfig/tmux/design|Tmux Design Spec]] · [[03-Areas/SystemConfig/MOC|SystemConfig MOC]] · [[03-Areas/SystemConfig/README|SystemConfig Overview]]
 
 ---
 
@@ -18,7 +31,7 @@ Canonical design rules, ergonomic invariants, requirements, and visual grammar c
      - `Space + z`: Zoom / Maximize Toggle
      - `Space + q`: Close Active Split / Buffer
 3. **Monospace Punctuation Visual Language**:
-   - Aligned with the punctuation visual grammar established in `~/.config/starship.toml` and tmux: `[ ] { } \ | ; : < > , . ? / ! * + -`.
+   - Aligned with the punctuation visual grammar established in `~/.config/starship.toml` and documented in [[03-Areas/SystemConfig/zsh/Zsh-Starship-Stow-Environment|Zsh + Starship Environment]] and [[03-Areas/SystemConfig/tmux/design|Tmux Design Spec]]: `[ ] { } \ | ; : < > , . ? / ! * + -`.
    - Lualine, Gitsigns, and Diagnostics discard decorative powerline symbols in favor of clean typographic punctuation boundaries.
 4. **Pure Code Philosophy**:
    - In-editor AI companions and MCP server daemons are intentionally excluded from Neovim to keep the editor lightweight, distraction-free, and cold-starting in under 35ms.
@@ -40,7 +53,11 @@ Canonical design rules, ergonomic invariants, requirements, and visual grammar c
 | **Git Signs** | `+` (add), `!` (change), `-` (delete) | Signcolumn diff markers |
 | **Time Badge** | `[; %H:%M]` | Semicolon duration/clock separator |
 | **Todo Tags** | `[ ] TODO`, `! FIX`, `* HACK`, `:: NOTE` | Comment highlight badges |
-| **Callout Blocks** | `:: NOTE`, `:: TIP`, `:: WARN` | Markdown rendered admonitions |
+| **Callout Blocks** | `󰋽 Note`, `󰌶 Tip`, `󰀪 Warning`, `󰳦 Caution` | Obsidian callout admonition badges |
+| **Markdown Headings** | `󰲡 H1` .. `󰲫 H6` with background strip | Level-based colored heading banners |
+| **Markdown Checkboxes** | `󰄱` (open), `󰄵` (done), `󰥔` (in-progress), `󰅖` (cancelled) | Interactive task checkboxes |
+| **Obsidian Wikilinks** | `󱗖 [[Note]]` | Vault wikilink badges |
+| **Code Fences** | Bordered shaded box with language icon header | Treesitter injected code syntax |
 
 ---
 
