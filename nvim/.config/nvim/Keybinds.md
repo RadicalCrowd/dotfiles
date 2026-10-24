@@ -1,6 +1,19 @@
+---
+type: resource
+status: active
+para: area
+area: SystemConfig
+owner: akif
+created: 2026-10-24
+updated: 2026-10-24
+tags: [systemconfig, nvim, neovim, keybinds, cheatsheet, spacefn, shortcuts]
+---
+
 # Neovim Keybinds & Ergonomic Cheat Sheet
 
 Comprehensive reference guide for all custom, SpaceFN, Obsidian vault, and LazyVim keybinds configured in `~/.config/nvim/`.
+
+[[03-Areas/SystemConfig/nvim/README|nvim Overview]] · [[03-Areas/SystemConfig/nvim/design|Neovim Design Spec]] · [[03-Areas/SystemConfig/tmux/README|tmux Overview]]
 
 ---
 
@@ -65,6 +78,7 @@ Built-in daily note generator matching Obsidian's Daily Notes plugin with automa
 
 | Keybind | Mode | Description |
 |---|---|---|
+| **`<C-b>`** | Normal / Insert / Visual / Term | **Toggle Sidebar File Explorer** (Fresh editor & VS Code parity) |
 | **`-`** | Normal | Open parent directory in **Oil.nvim** (edit filesystem as a text buffer) |
 | **`<leader>e`** | Normal | Open **Oil.nvim** file explorer |
 | **`s`** | Normal / Visual | **Flash Jump** (2-keystroke jump to any word/character on screen) |

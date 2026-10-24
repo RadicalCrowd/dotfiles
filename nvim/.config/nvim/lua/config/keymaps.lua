@@ -13,6 +13,18 @@ map("v", ">", ">gv")
 -- Quick save
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
+-- Sidebar Toggle (Fresh editor & VS Code parity: Ctrl + B toggles file tree)
+local function toggle_sidebar()
+  local pickers = Snacks.picker.get({ source = "explorer" })
+  if #pickers > 0 then
+    pickers[1]:close()
+  else
+    Snacks.explorer()
+  end
+end
+
+map({ "n", "i", "v", "t" }, "<C-b>", toggle_sidebar, { desc = "Toggle Sidebar (File Explorer)" })
+
 -- Obsidian Daily Note Integration (Obsidian Plugin Parity)
 -- <leader>od / <leader>dd: Open today's daily note (generates from template if missing)
 -- <leader>ol / <leader>dl: Open latest existing daily note in history
