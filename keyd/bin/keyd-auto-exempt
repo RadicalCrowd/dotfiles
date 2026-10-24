@@ -1,0 +1,84 @@
+#!/usr/bin/env python3
+"""keyd-auto-exempt — Automatic SpaceFN exemption for Minecraft and games.
+
+Monitors active window focus via xprop events. Automatically restores raw spacebar
+when games are active, and seamlessly re-engages SpaceFN for terminals and desktop apps.
+Requires zero manual toggles or game modes.
+"""
+
+import os
+import re
+import signal
+import subprocess
+import sys
+import time
+
+GAME_PATTERNS = [
+    re.compile(r'minecraft', re.IGNORECASE),
+    re.compile(r'prismlauncher', re.IGNORECASE),
+    re.compile(r'steam_app', re.IGNORECASE),
+    re.compile(r'hl2_linux', re.IGNORECASE),
+    re.compile(r'cs2', re.IGNORECASE),
+    re.compile(r'dota2', re.IGNORECASE),
+    re.compile(r'lutris', re.IGNORECASE),
+    re.compile(r'retroarch', re.IGNORECASE),
+    re.compile(r'osu!', re.IGNORECASE),
+]
+
+def set_space_mode(is_game: bool):
+    try:
+        if is_game:
+            subprocess.run(['keyd', 'bind', 'main.space = space'], capture_output=True, check=True)
+        else:
+            subprocess.run(['keyd', 'bind', 'main.space = overload(space_fn, space)'], capture_output=True, check=True)
+    except Exception as e:
+        sys.stderr.write(f"keyd-auto-exempt error: {e}\n")
+
+def check_window_is_game(win_id: str) -> bool:
+    if win_id == '0x0':
+        return False
+    try:
+        res = subprocess.run(['xprop', '-id', win_id, 'WM_CLASS', 'WM_NAME'], capture_output=True, text=True, timeout=1)
+        for pattern in GAME_PATTERNS:
+            if pattern.search(res.stdout):
+                return True
+    except Exception:
+        pass
+    return False
+
+def run_monitor():
+    current_mode = None  # True if game, False if normal
+
+    while True:
+        try:
+            proc = subprocess.Popen(
+                ['xprop', '-root', '-spy', '_NET_ACTIVE_WINDOW'],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.DEVNULL,
+                text=True
+            )
+
+            for line in proc.stdout:
+                match = re.search(r'0x[0-9a-fA-F]+', line)
+                if not match:
+                    continue
+                win_id = match.group(0)
+                is_game = check_window_is_game(win_id)
+
+                if is_game != current_mode:
+                    set_space_mode(is_game)
+                    current_mode = is_game
+
+        except Exception as e:
+            time.sleep(2)
+        finally:
+            if 'proc' in locals() and proc.poll() is None:
+                proc.terminate()
+
+def main():
+    signal.signal(signal.SIGINT, lambda s, f: sys.exit(0))
+    signal.signal(signal.SIGTERM, lambda s, f: sys.exit(0))
+    run_monitor()
+
+if __name__ == '__main__':
+    main()

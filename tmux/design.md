@@ -21,9 +21,10 @@ Canonical design rules, requirements, ergonomic invariants, and punctuation visu
 5. **Context Continuity**:
    - All newly spawned panes and windows must inherit the active working directory (`-c "#{pane_current_path}"`).
    - Windows and panes must be 1-indexed (`base-index 1`, `pane-base-index 1`) with automatic gap renumbering (`renumber-windows on`).
-6. **Gaming Coexistence & Modal Exemption**:
+6. **Automatic Gaming Exemption (Zero Manual Toggles)**:
    - Games (such as Minecraft) require sustained holding of the Spacebar for jumping, swimming, and sprint-jumping.
-   - `keyd` provides an instant hardware `[game]` layer toggled via `Right Alt`, `Insert`, `Pause`, `Space + Esc`, or `Ctrl+Alt+Space`, completely restoring standard physical spacebar behavior with full repeat and hold.
+   - An event-driven background service (`keyd-auto-exempt.service`) automatically detects when Minecraft or 3D games gain focus and dynamically binds `main.space = space`.
+   - When switching back to terminal emulators, SpaceFN re-engages instantaneously. No manual toggles, hotkeys, or modal modes are required.
 
 ---
 
