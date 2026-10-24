@@ -21,6 +21,9 @@ Canonical design rules, requirements, ergonomic invariants, and punctuation visu
 5. **Context Continuity**:
    - All newly spawned panes and windows must inherit the active working directory (`-c "#{pane_current_path}"`).
    - Windows and panes must be 1-indexed (`base-index 1`, `pane-base-index 1`) with automatic gap renumbering (`renumber-windows on`).
+6. **Gaming Coexistence & Modal Exemption**:
+   - Games (such as Minecraft) require sustained holding of the Spacebar for jumping, swimming, and sprint-jumping.
+   - `keyd` provides an instant hardware `[game]` layer toggled via `Right Alt`, `Insert`, `Pause`, `Space + Esc`, or `Ctrl+Alt+Space`, completely restoring standard physical spacebar behavior with full repeat and hold.
 
 ---
 
